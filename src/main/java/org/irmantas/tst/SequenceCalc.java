@@ -36,18 +36,18 @@ public class SequenceCalc {
 
     }
 
-    private Double operationSequenceRezultPrev(List<String> d, List<String> o, double previous) {
+    public Double operationSequenceRezultPrev(List<String> d, List<String> o, double previous) {
         Double rez = previous;
         Double second;
         String operation;
         for (int i = 0; i < d.size(); i++) {
             second = Double.parseDouble(d.get(i));
-            rez = red(rez, o.get(i - 1), second);
+            rez = red(rez, o.get(i), second);
         }
         return rez;
     }
 
-    private  Double operationSequenceRezult(List<String> d, List<String> o) {
+    public   Double operationSequenceRezult(List<String> d, List<String> o) {
         Double rez = Double.parseDouble(d.get(0));
         Double second;
         String operation;
@@ -58,7 +58,7 @@ public class SequenceCalc {
         return rez;
     }
 
-    private  Double red(Double first, String st, Double second) {
+    public   Double red(Double first, String st, Double second) {
         double rez;
         switch (st) {
             case "+":
