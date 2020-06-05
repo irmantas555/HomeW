@@ -1,0 +1,48 @@
+BMW 3-serie 2019 - present 4-door, sedan
+BMW 7-serie 2019 - present 4-door, sedan
+Ford Mondeo 2019 - present 4-door, sedan
+Jaguar XE 2019 - present 4-door, sedan
+Mazda 3 Sedan 2019 - present 4-door, sedan
+Mercedes-Benz CLA Coupe 2019 - present 4-door, sedan
+Tesla Model 3 2019 - present 4-door, sedan
+Toyota Camry 2019 - present 4-door, sedan
+Toyota Corolla Sedan 2019 - present 4-door, sedan
+Volvo S60 2019 - present 4-door, sedan
+Audi A4 2018 - present 4-door, sedan
+Audi A6 2018 - present 4-door, sedan
+Kia Optima 2018 - present 4-door, sedan
+Lexus ES 2018 - present 4-door, sedan
+Lexus LS 2018 - present 4-door, sedan
+Mazda 6 2018 - present 4-door, sedan
+Mercedes-Benz A-class Limousine 2018 - present 4-door, sedan
+Mercedes-Benz C-class 2018 - present 4-door, sedan
+Mercedes-Benz CLS 2018 - present 4-door, sedan
+Audi A8 2017 - present 4-door, sedan
+Audi RS3 Limousine 2017 - present 4-door, sedan
+Bentley Mulsanne 2017 - present 4-door, sedan
+BMW 5-serie 2017 - present 4-door, sedan
+Cadillac CT6 2017 - present 4-door, sedan
+Cadillac ST6 2017 - present 4-door, sedan
+Honda Civic 2017 - present 4-door, sedan
+Lexus IS 2017 - present 4-door, sedan
+Maserati Ghibli 2017 - present 4-door, sedan
+Maserati Quattroporte 2017 - present 4-door, sedan
+Mercedes-Benz S-class 2017 - present 4-door, sedan
+Toyota Mirai 2017 - present 5-door, sedan
+Alfa Romeo Giulia 2016 - present 4-door, sedan
+Audi A3 Limousine 2016 - present 4-door, sedan
+Audi S3 Limousine 2016 - present 4-door, sedan
+Audi S4 2016 - 2018 4-door, sedan
+Bentley Bentayga 2016 - present 4-door, sedan
+Fiat Tipo 2016 - 2018 4-door, sedan
+Hyundai i40 2016 - 2019 4-door, sedan
+Lexus GS 2016 - 2018 4-door, sedan
+Maserati Quattroporte 2016 - 2017 4-door, sedan
+Mazda 3 Sedan 2016 - 2019 4-door, sedan
+Mercedes-Benz CLA Coupe 2016 - 2019 4-door, sedan
+Mercedes-Benz E-class 2016 - present 4-door, sedan
+Renault Talisman 2016 - present 4-door, sedan
+Volvo S90 2016 - present 4-door, sedan
+Audi A4 2015 - 2019 4-door, sedan
+BMW 3-serie 2015 - 2019 4-door, sedan
+BMW 6-serie Gran Coupe 2015 - 2019 4-door, sedan
