@@ -2,6 +2,8 @@ package org.irmantas.tst;
 
 
 import io.reactivex.rxjava3.core.Observable;
+import io.reactivex.rxjava3.core.Single;
+
 import java.util.List;
 
 public class SequenceCalc {
@@ -23,9 +25,28 @@ public class SequenceCalc {
                 .toList()
                 .blockingGet();
 
+        Single<List<String>> sringNumbers = Observable.just(sequence)
+                .map(s -> s.trim())
+                .map(s -> s.replaceAll("[a-zA-Z]", ""))
+                .flatMap(s -> Observable.fromArray(s.split("[^0-9.]")))
+                .toList();
+
+        Single<List<String>> stringOperations = Observable.just(sequence)
+                .map(s -> s.trim())
+                .flatMap(s -> Observable.fromArray(s.split("[0-9.a-zA-Z]")))
+                .filter(s -> !s.equals("") && !s.equals("."))
+                .toList();
+
+
+
+
 //        d.forEach(System.out::println);
 //        System.out.println();
 //        o.forEach(System.out::print);
+
+
+
+
         if (previous == 0.00) {
             Double rezult = operationSequenceRezult(d, o);
         return rezult;
