@@ -1,10 +1,6 @@
 package org.irmantas.hw0607;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-import java.util.Set;
-
 
 
 public class GroupsMain {
@@ -26,22 +22,14 @@ public class GroupsMain {
 
         service.getStudentsYoungerThan(25,groups);
 
-
-
         service.studentsWithPreviousJavaKnowledge(students);
 
         service.removeStudentsYoungerThan(20,groups);
 
-        service.gropWithMaxJavaKnowHowStudents(groups);
+        service.groupWithMaxJavaKnowHowStudents(groups);
+
+        service.groupWithMaxJavaKnowHowStudentsRX(groups);
     }
 
-
-    private static void sleep(int time) {
-        try {
-            Thread.sleep(time);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }
 

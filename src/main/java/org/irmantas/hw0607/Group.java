@@ -19,16 +19,16 @@ public class Group {
     }
 
     public void addStudent(Student student) throws MaximumNumberOfStudentsReached {
-            if (students.isEmpty() || students.size() < 5) {
-                students.add(student);
-            } else {
-                throw new MaximumNumberOfStudentsReached("Maximum number of students exceeds 5");
-            }
+        if (students.isEmpty() || students.size() < 5) {
+            students.add(student);
+        } else {
+            throw new MaximumNumberOfStudentsReached("Maximum number of students exceeds 5");
+        }
     }
 
     public void removeStudent(Student student) {
-        synchronized (this){
-        students.remove(student);
+        synchronized (this) {
+            students.remove(student);
         }
     }
 
@@ -42,9 +42,9 @@ public class Group {
 
     public String printStudents() {
         StringBuilder studentsBuilder = new StringBuilder("");
-        for (Student stud: students
-             ) {
-            studentsBuilder.append("Student: " + stud.getFirstName() +" "  + stud.getLastName() +" has previous Java knowlwgde: "  + stud.isHasPreviousJavaKnowledge() + "\n");
+        for (Student stud : students
+        ) {
+            studentsBuilder.append("Student: " + stud.getFirstName() + " " + stud.getLastName() + " has previous Java knowlwgde: " + stud.isHasPreviousJavaKnowledge() + "\n");
         }
         return studentsBuilder.toString();
     }
@@ -58,6 +58,14 @@ public class Group {
         return students;
     }
 
+    public int fluentCount(Set<Student> students) {
+        long count = students.stream()
+                .map(Student::isHasPreviousJavaKnowledge)
+                .filter(Boolean::booleanValue)
+                .count();
+        return (int) count;
+    }
+
     @Override
     public String toString() {
         return "Group{" +
@@ -66,10 +74,8 @@ public class Group {
     }
 }
 
-class MaximumNumberOfStudentsReached extends Exception{
+class MaximumNumberOfStudentsReached extends Exception {
     public MaximumNumberOfStudentsReached(String error) {
         super(error);
     }
-
-
 }

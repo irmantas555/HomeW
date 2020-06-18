@@ -2,12 +2,17 @@ package org.irmantas.hw0607;
 
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.util.context.Context;
+import reactor.util.function.Tuple2;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StudentService {
 
@@ -69,6 +74,7 @@ public class StudentService {
         Observable.fromIterable(groups)
                 .flatMap(group -> Observable.fromIterable(group.getStudents()))
                 .filter(student -> getage(student) < ageLimit)
+                .distinct()
                 .forEach(student -> System.out.println("Student: " + student.getFirstName() + " " + student.getLastName() + " which age is: " + getage(student)));
     }
 
@@ -117,7 +123,7 @@ public class StudentService {
                 .forEach(student -> System.out.println(student));
     }
 
-    public void gropWithMaxJavaKnowHowStudents(List<Group> groups) {
+    public void groupWithMaxJavaKnowHowStudents(List<Group> groups) {
         System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
         System.out.println("Max students qty in group with previous JAVA knowledge");
         int maxQty = 0;
@@ -139,6 +145,61 @@ public class StudentService {
         }
 
         System.out.println("Grup with highest number of Java fluent students is: " + max.toString() + " and fluent students quantity in it is " + maxQty);
+
+    }
+
+    public void groupWithMaxJavaKnowHowStudentsRX(List<Group> groups) {
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("Students with previous JAVA knowledge in Reactive Fashion");
+        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+        Single<Map<String, Long>> mapSingle = Observable.fromIterable(groups)
+                .toMap(group -> group.getName(), group ->
+                        Observable.fromIterable(group.getStudents())
+                                .map(student -> student.isHasPreviousJavaKnowledge())
+                                .filter(Boolean::booleanValue)
+                                .count()
+                                .blockingGet()
+                );
+        Map<String, Long> stringLongMap = mapSingle.blockingGet();
+
+        Map.Entry<String, Long> entry = stringLongMap.entrySet().stream()
+                .max(Comparator.comparing(Map.Entry::getValue))
+                .get();
+        System.out.println("Group with highest fluent Java sudents: " + entry.getKey() + " there are - " + entry.getValue() + " Java fluent students in it");
+
+
+        Optional<Map.Entry<String, Integer>> max = Flux.fromIterable(groups)
+                .reduce(new HashMap<String, Integer>(), (aggr, gr) -> {
+                    aggr.put(gr.getName(), gr.fluentCount(gr.getStudents()));
+                    return aggr;
+                })
+                .flatMap(stringIntegerHashMap -> Mono.just(stringIntegerHashMap.entrySet()))
+                .flux()
+                .toStream()
+                .flatMap(Collection::stream)
+                .max((o1, o2) -> o1.getValue() - o2.getValue());
+
+        System.out.println("Group optional with highest fluent Java sudents: " + max.get().getKey() + " there are - " + max.get().getValue() + " Java fluent students in it");
+
+        Flux.fromIterable(groups)
+                .reduce(new HashMap<String, Integer>(), (aggr, gr) -> {
+                    aggr.put(gr.getName(), gr.fluentCount(gr.getStudents()));
+                    return aggr;
+                })
+                .flatMap(str -> findThatMax(str))
+                .subscribe(sInEntry -> System.out.println("Function Group with highest fluent Java sudents: " + sInEntry.getKey()
+                        + " there are - " + sInEntry.getValue() + " Java fluent students in it"));
+
+
+    }
+
+    private Mono<Map.Entry<String,Integer>> findThatMax(HashMap<String, Integer> str) {
+        Optional<Map.Entry<String, Integer>> max = str.entrySet().stream()
+                .max((o1, o2) -> o1.getValue()-o2.getValue());
+
+            Map.Entry<String,Integer> maxValue = max.get();
+
+            return Mono.just(maxValue);
 
     }
 
