@@ -39,13 +39,9 @@ public class SequenceCalc {
 
 
 
-
 //        d.forEach(System.out::println);
 //        System.out.println();
 //        o.forEach(System.out::print);
-
-
-
 
         if (previous == 0.00) {
             Double rezult = operationSequenceRezult(d, o);
